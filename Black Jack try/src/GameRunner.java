@@ -23,7 +23,7 @@ public class GameRunner {
 		int money = 100;
 		int bet;
 		int left;
-		int payOut = 0;
+		
 		
 		
 		while (playAgain = true) {
@@ -32,7 +32,7 @@ public class GameRunner {
 		dealer.addCard(theDeck.dealNextCard());
 		one.addCard(theDeck.dealNextCard());
 		dealer.addCard(theDeck.dealNextCard());
-		
+		System.out.println("Your actual stack is: " +money);
 		System.out.println("How much do you want to bet?");
 		bet = dollar.nextInt();
 		System.out.print("Your bet is: "+bet +". ");
@@ -58,9 +58,12 @@ public class GameRunner {
 			System.out.println("***************");
 			oneDone = true;
 			dealerDone = true;
+			
 			//blackJack = true;
 			int bj=22;
 			bj=dealer.getHandSum();
+			System.out.println("You win " +3*bet);
+			money = left + 3*bet;
 		
 			
 			
