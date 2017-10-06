@@ -14,7 +14,7 @@ public class GameRunner {
 		Scanner sc = new Scanner(System.in);
 		
 		// initialize deck
-		Deck theDeck = new Deck(1, true);
+		Deck theDeck = new Deck(7, true);
 		
 		// initialize player objects
 		Player one = new Player("Eddy");
@@ -43,7 +43,7 @@ public class GameRunner {
 		// flags for when each player is finished hitting
 				boolean oneDone = false;
 				boolean dealerDone = false;
-				//boolean blackJack= false;
+				boolean blackJack= false;
 				String ans;
 		
 		// print initial hands
@@ -59,7 +59,7 @@ public class GameRunner {
 			oneDone = true;
 			dealerDone = true;
 			
-			//blackJack = true;
+			blackJack = true;
 			int bj=22;
 			bj=dealer.getHandSum();
 			System.out.println("You win " +3*bet);
@@ -120,6 +120,7 @@ public class GameRunner {
 				
 				
 				if (dealer.getHandSum()<one.getHandSum() && (one.getHandSum()>=17 && one.getHandSum()<22)) {
+					System.out.println("\n");
 					System.out.println("The dealer hits\n");
 					dealerDone = !dealer.addCard(theDeck.dealNextCard());
 					
@@ -127,6 +128,7 @@ public class GameRunner {
 					System.out.println("total for dealer: " +dealer.getHandSum());
 					
 					if (dealer.getHandSum() < 17) {
+						System.out.println("\n");
 						System.out.println("The dealer hits\n");
 						dealerDone = !dealer.addCard(theDeck.dealNextCard());
 						dealer.printHand(true);
@@ -134,6 +136,7 @@ public class GameRunner {
 						
 					}
 				} else {
+					System.out.println("\n");
 					System.out.println("The dealer stays\n");
 					dealerDone = true;
 					System.out.println("total for dealer: " +dealer.getHandSum());
@@ -166,10 +169,15 @@ public class GameRunner {
 			
 		
 			}
+		if (blackJack == true) {
+			System.out.println("You win " +3*bet);
+			money = left + 3*bet;
+			System.out.println("Your actual stack is: " +money);
+		}
 			
 			
 			
-		 else {
+		 else if (oneSum < dealerSum && dealerSum <= 21 || oneSum > 21){
 			System.out.println("Total for dealer: " + dealer.getHandSum());
 			System.out.println("Dealer wins ");
 			money = money - bet;
