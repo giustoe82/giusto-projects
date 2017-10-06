@@ -188,9 +188,14 @@ public class GameRunner {
 		System.out.println();
 		System.out.println("Play again? y/n");
 		ans2 = play.next();
+		boolean replay=true;
+		
+		while(replay==true) {
+			
 		
 		if (ans2.compareToIgnoreCase("Y") == 0) {
 			playAgain = true;
+			replay = false;
 			one.emptyHand();
 			dealer.emptyHand();
 			bet = 0;
@@ -201,12 +206,18 @@ public class GameRunner {
 			sc.close();
 			play.close();
 			dollar.close();
+			System.out.println("Thank you for playing");
 			
 			System.exit(0);
+		} else {
+			System.err.println("input wrong, try again ...push a button ");
+			replay = true;
+			ans2 = play.next();
 		}
 		
 		}
 		
 	}
 
+}
 }
